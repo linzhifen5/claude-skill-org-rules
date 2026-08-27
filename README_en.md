@@ -6,6 +6,11 @@ Automatically organize and synchronize `CLAUDE.md` and `README.md` rule files in
 
 ## Changelog
 
+### v1.2.0 (2026-08-28)
+
+- Added: Code comment feature - add file header and JSDoc comments to .ts/.tsx files in src/
+- Added: GitHub push feature - prompt to push after updates
+
 ### v1.1.0 (2026-08-28)
 
 - Added: Auto-sync README when skill itself is updated
@@ -17,10 +22,18 @@ Automatically organize and synchronize `CLAUDE.md` and `README.md` rule files in
 
 ## Features
 
+### Rule File Organization
+
 - Read and compare existing rule files
 - Scan actual project structure (directories, package.json, entry files, etc.)
 - Synchronize directory structure, tech stack versions, and command lists
 - Maintain update logs
+
+### Code Comments
+
+- Add file header comments to `.ts` and `.tsx` files in `src/`
+- Add JSDoc comments to exported functions and components
+- Skip files that already have comments
 
 ## Usage
 
@@ -28,9 +41,10 @@ Automatically organize and synchronize `CLAUDE.md` and `README.md` rule files in
 /a-org-rules
 ```
 
-Or simply say:
+Or simply say：
 
 > Help me organize CLAUDE.md and README.md
+> Add comments to src files
 
 ## Organization Rules
 
@@ -51,9 +65,30 @@ Or simply say:
 
 Each organization is recorded in `memory/rule-file-maintenance.md`.
 
+## Code Comment Rules
+
+### File Header
+
+```typescript
+/**
+ * App.tsx
+ * Main application component
+ */
+```
+
+### JSDoc Comments
+
+```typescript
+/**
+ * Get user information
+ * @param id - User ID
+ * @returns User info object
+ */
+```
+
 ## Core Principles
 
 1. CLAUDE.md and README.md directory structures must be identical
 2. Tech stack info must sync with package.json
 3. Only record main dependencies, don't over-expand
-
+4. Keep comments concise, don't duplicate

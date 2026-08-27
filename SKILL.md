@@ -57,6 +57,83 @@ description: 整理项目根目录下的 CLAUDE.md 和 README.md 规则文件，
 - **README_en.md** - 更新英文版本，与中文版保持同步
 - **更新日志** - 在两个 README 顶部添加 version 或 changelog 记录本次变更
 
+## 代码注释功能
+
+当用户要求"添加注释"、"给文件加注释"、"生成 JSDoc" 时执行此功能。
+
+### 应用范围
+
+仅处理 `src/` 目录下的 `.ts` 和 `.tsx` 文件。
+
+### 文件顶部注释规则
+
+在文件顶部添加注释块，包含：
+- 文件名
+- 文件用途简述
+
+格式：
+```typescript
+/**
+ * 文件名.tsx
+ * 文件用途简述
+ */
+```
+
+### JSDoc 注释规则
+
+给导出函数和组件添加 JSDoc：
+
+```typescript
+/**
+ * 函数简述
+ * @param 参数名 - 参数说明
+ * @returns 返回值说明
+ */
+```
+
+```typescript
+/**
+ * 组件简述
+ * @description 组件详细说明（仅当需要时添加）
+ */
+```
+
+### 执行顺序
+
+1. 扫描 `src/` 目录下所有 `.ts`、`.tsx` 文件
+2. 检查文件是否已有顶部注释，如有则跳过
+3. 分析文件内容，生成文件用途说明
+4. 添加文件顶部注释
+5. 检查导出函数/组件，添加 JSDoc（已有则跳过）
+6. 跳过 `node_modules`、`dist` 等目录
+
+### 原则
+
+- **简洁** - 注释不超过 2 行
+- **中文** - 全部使用中文
+- **不重复** - 已有注释的文件不重复添加
+- **保守** - 不确定时不添加，保留原样
+
+## GitHub 推送流程
+
+当 skill 更新完成后，提示用户是否推送到 GitHub：
+
+> ✅ Skill 已更新，是否推送到 GitHub？
+
+用户确认后执行：
+
+```bash
+cd ~/.claude/skills/a-org-rules
+git init (若未初始化)
+git add .
+git commit -m "Update: 描述本次变更"
+git remote set-url origin https://github.com/linzhifen5/claude-skill-org-rules.git
+git push -u origin main --force
+```
+
+推送成功后显示：
+> ✅ 已推送到 https://github.com/linzhifen5/claude-skill-org-rules
+
 ## 验证
 
 更新完成后，使用 `grep` 或 `Read` 工具抽查关键内容是否正确匹配实际项目文件。
