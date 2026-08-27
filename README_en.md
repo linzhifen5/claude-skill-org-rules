@@ -1,0 +1,44 @@
+# a-org-rules
+
+Automatically organize and synchronize `CLAUDE.md` and `README.md` rule files in the project root directory with the actual project structure.
+
+## Features
+
+- Read and compare existing rule files
+- Scan actual project structure (directories, package.json, entry files, etc.)
+- Synchronize directory structure, tech stack versions, and command lists
+- Maintain update logs
+
+## Usage
+
+```
+/a-org-rules
+```
+
+Or simply say:
+> Help me organize CLAUDE.md and README.md
+
+## Organization Rules
+
+### CLAUDE.md Updates
+
+- **Tech Stack** - Extract main dependency versions from package.json
+- **Directory Structure** - List all files completely, synced with actual project
+- **Common Commands** - Extract from package.json scripts
+- **Development Notes** - Update port, entry paths, etc.
+
+### README.md Updates
+
+- **Tech Stack** - Consistent with CLAUDE.md
+- **Project Structure** - Directory structure fully synced with CLAUDE.md
+- **Quick Start** - Update installation and startup commands
+
+### Maintenance Logs
+
+Each organization is recorded in `memory/rule-file-maintenance.md`.
+
+## Core Principles
+
+1. CLAUDE.md and README.md directory structures must be identical
+2. Tech stack info must sync with package.json
+3. Only record main dependencies, don't over-expand
