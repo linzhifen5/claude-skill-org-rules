@@ -7,7 +7,7 @@ description: 整理项目根目录下的 CLAUDE.md 和 README.md 规则文件，
 
 ## 概述
 
-自动检查并更新项目的 `CLAUDE.md` 和 `README.md`，确保文档与实际项目结构一致，包括：目录结构、命令、技术栈版本、应用列表等信息。
+自动检查并更新项目的 `CLAUDE.md` 和 `README.md`，确保文档与实际项目结构一致，包括：目录结构、命令、技术栈版本、应用列表等信息。同时自动给 `src/` 目录下的代码文件添加注释。
 
 ## 工作流程
 
@@ -23,7 +23,11 @@ description: 整理项目根目录下的 CLAUDE.md 和 README.md 规则文件，
 - 应用入口文件（如 `main.ts`、`index.js` 等）
 - 配置文件（如 `.gitignore`、`tsconfig.json` 等）
 
-### 3. 更新 CLAUDE.md
+### 3. 自动添加代码注释（自动执行）
+
+扫描 `src/` 目录下的 `.ts`、`.tsx`、`.css` 文件，检查是否已有注释，如有则跳过。给未添加注释的文件添加顶部注释。
+
+### 4. 更新 CLAUDE.md
 
 确保以下内容与实际项目一致：
 
@@ -32,7 +36,7 @@ description: 整理项目根目录下的 CLAUDE.md 和 README.md 规则文件，
 - **技术栈** - 从 `package.json` 的 `dependencies`/`devDependencies` 提取主要技术版本
 - **开发说明** - 更新应用入口、构建输出等路径信息
 
-### 4. 更新 README.md
+### 5. 更新 README.md
 
 同步更新以下内容：
 
@@ -42,14 +46,14 @@ description: 整理项目根目录下的 CLAUDE.md 和 README.md 规则文件，
 - **快速开始** - 更新安装和启动命令
 - **项目结构说明** - 各目录/文件的用途说明
 
-### 5. 维护记录
+### 6. 维护记录
 
 在项目根目录创建或更新 `memory/rule-file-maintenance.md`，记录：
 - 整理日期
 - 更新了哪些内容
 - 是否有人工确认
 
-### 6. Skill 自身更新（仅当 skill 有变更时执行）
+### 7. Skill 自身更新（仅当 skill 有变更时执行）
 
 当此 skill 的 SKILL.md 内容发生变更时，必须同步更新 README 文件：
 
@@ -57,21 +61,17 @@ description: 整理项目根目录下的 CLAUDE.md 和 README.md 规则文件，
 - **README_en.md** - 更新英文版本，与中文版保持同步
 - **更新日志** - 在两个 README 顶部添加 version 或 changelog 记录本次变更
 
-## 代码注释功能
+## 代码注释规则
 
-当用户要求"添加注释"、"给文件加注释"、"生成 JSDoc" 时执行此功能。
+整理规则文件时自动执行，无需用户请求。
 
 ### 应用范围
 
-仅处理 `src/` 目录下的 `.ts` 和 `.tsx` 文件。
+处理 `src/` 目录下的 `.ts`、`.tsx`、`.css` 文件。
 
-### 文件顶部注释规则
+### 文件顶部注释格式
 
-在文件顶部添加注释块，包含：
-- 文件名
-- 文件用途简述
-
-格式：
+- `.ts`、`.tsx` 文件：
 ```typescript
 /**
  * 文件名.tsx
@@ -79,33 +79,18 @@ description: 整理项目根目录下的 CLAUDE.md 和 README.md 规则文件，
  */
 ```
 
-### JSDoc 注释规则
-
-给导出函数和组件添加 JSDoc：
-
-```typescript
-/**
- * 函数简述
- * @param 参数名 - 参数说明
- * @returns 返回值说明
- */
-```
-
-```typescript
-/**
- * 组件简述
- * @description 组件详细说明（仅当需要时添加）
- */
+- `.css` 文件：
+```css
+/* 文件名.css 用途说明 */
 ```
 
 ### 执行顺序
 
-1. 扫描 `src/` 目录下所有 `.ts`、`.tsx` 文件
+1. 扫描 `src/` 目录下所有 `.ts`、`.tsx`、`.css` 文件
 2. 检查文件是否已有顶部注释，如有则跳过
 3. 分析文件内容，生成文件用途说明
 4. 添加文件顶部注释
-5. 检查导出函数/组件，添加 JSDoc（已有则跳过）
-6. 跳过 `node_modules`、`dist` 等目录
+5. 跳过 `node_modules`、`dist` 等目录
 
 ### 原则
 

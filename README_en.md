@@ -8,7 +8,7 @@ Automatically organize and synchronize `CLAUDE.md` and `README.md` rule files in
 
 ### v1.2.0 (2026-08-28)
 
-- Added: Code comment feature - add file header and JSDoc comments to .ts/.tsx files in src/
+- Added: Code comment feature - auto add comments to src files when organizing rules
 - Added: GitHub push feature - auto push after updates, no confirmation needed
 
 ### v1.1.0 (2026-08-28)
