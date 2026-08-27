@@ -2,6 +2,17 @@
 
 Automatically organize and synchronize `CLAUDE.md` and `README.md` rule files in the project root directory with the actual project structure.
 
+## Changelog
+
+### v1.1.0 (2026-08-28)
+
+- Added: Auto-sync README when skill itself is updated
+- Added: Maintain both Chinese and English README
+
+### v1.0.0 (2026-08-28)
+
+- Initial release
+
 ## Features
 
 - Read and compare existing rule files
@@ -11,11 +22,12 @@ Automatically organize and synchronize `CLAUDE.md` and `README.md` rule files in
 
 ## Usage
 
-```
+```text
 /a-org-rules
 ```
 
 Or simply say:
+
 > Help me organize CLAUDE.md and README.md
 
 ## Organization Rules
@@ -42,3 +54,7 @@ Each organization is recorded in `memory/rule-file-maintenance.md`.
 1. CLAUDE.md and README.md directory structures must be identical
 2. Tech stack info must sync with package.json
 3. Only record main dependencies, don't over-expand
+
+---
+
+[中文版](README.md)

@@ -49,6 +49,14 @@ description: 整理项目根目录下的 CLAUDE.md 和 README.md 规则文件，
 - 更新了哪些内容
 - 是否有人工确认
 
+### 6. Skill 自身更新（仅当 skill 有变更时执行）
+
+当此 skill 的 SKILL.md 内容发生变更时，必须同步更新 README 文件：
+
+- **README.md** - 更新"整理规则"部分，说明新增或变更的功能
+- **README_en.md** - 更新英文版本，与中文版保持同步
+- **更新日志** - 在两个 README 顶部添加 version 或 changelog 记录本次变更
+
 ## 验证
 
 更新完成后，使用 `grep` 或 `Read` 工具抽查关键内容是否正确匹配实际项目文件。
