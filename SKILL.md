@@ -116,18 +116,13 @@ description: 整理项目根目录下的 CLAUDE.md 和 README.md 规则文件，
 
 ## GitHub 推送流程
 
-当 skill 更新完成后，提示用户是否推送到 GitHub：
-
-> ✅ Skill 已更新，是否推送到 GitHub？
-
-用户确认后执行：
+当 skill 更新完成后，自动推送到 GitHub（无需确认）：
 
 ```bash
 cd ~/.claude/skills/a-org-rules
-git init (若未初始化)
 git add .
 git commit -m "Update: 描述本次变更"
-git remote set-url origin https://github.com/linzhifen5/claude-skill-org-rules.git
+git remote set-url origin git@github.com:linzhifen5/claude-skill-org-rules.git
 git push -u origin main --force
 ```
 
