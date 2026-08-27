@@ -2,6 +2,8 @@
 
 Automatically organize and synchronize `CLAUDE.md` and `README.md` rule files in the project root directory with the actual project structure.
 
+[中文](README.md) | [Changelog](#changelog)
+
 ## Changelog
 
 ### v1.1.0 (2026-08-28)
@@ -55,6 +57,3 @@ Each organization is recorded in `memory/rule-file-maintenance.md`.
 2. Tech stack info must sync with package.json
 3. Only record main dependencies, don't over-expand
 
----
-
-[中文版](README.md)

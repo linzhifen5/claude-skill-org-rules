@@ -2,6 +2,8 @@
 
 自动整理项目根目录下的 `CLAUDE.md` 和 `README.md` 规则文件，确保内容与实际项目结构保持同步。
 
+[English](README_en.md) | [更新日志](#更新日志)
+
 ## 更新日志
 
 ### v1.1.0 (2026-08-28)
@@ -55,6 +57,3 @@
 2. 技术栈信息必须与 package.json 同步
 3. 只记录主要依赖，不过度展开
 
----
-
-[English Version](README_en.md)
