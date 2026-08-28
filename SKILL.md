@@ -145,6 +145,28 @@ release/
 - **不重复** - 已有注释的文件不重复添加
 - **保守** - 不确定时不添加，保留原样
 
+### macOS 无标题栏窗口
+
+Electron 创建无标题栏窗口时，需要同时配置拖拽区域：
+
+**1. 主进程配置** (`electron/main.ts`)：
+```typescript
+win = new BrowserWindow({
+  frame: false,           // 禁用原生窗口框架
+  titleBarStyle: 'hidden', // macOS 隐藏标题栏
+})
+```
+
+**2. 渲染进程配置** (React)：
+```tsx
+// 主布局设为拖拽区域
+<div style={{ WebkitAppRegion: 'drag' } as React.CSSProperties}>
+  {/* 可交互元素设为不可拖拽 */}
+  <button style={{ WebkitAppRegion: 'no-drag' } as React.CSSProperties}>点击</button>
+  <aside style={{ WebkitAppRegion: 'no-drag' } as React.CSSProperties}>...</aside>
+</div>
+```
+
 ## GitHub 推送流程
 
 当 skill 更新完成后，自动推送到 GitHub（无需确认）：
