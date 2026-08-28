@@ -23,6 +23,36 @@ description: 整理项目根目录下的 CLAUDE.md 和 README.md 规则文件，
 - 应用入口文件（如 `main.ts`、`index.js` 等）
 - 配置文件（如 `.gitignore`、`tsconfig.json` 等）
 
+### 2.1 整理 .gitignore
+
+检查 `.gitignore` 文件，确保包含以下常见不需要 Git 追踪的文件和目录：
+
+```
+# Node
+node_modules/
+dist/
+dist-ssr/
+dist-electron/
+*.local
+
+# Logs
+logs/
+*.log
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build output
+release/
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+```
+
 ### 3. 自动添加代码注释（自动执行）
 
 扫描 `src/` 目录下的 `.ts`、`.tsx`、`.css` 文件，检查是否已有注释，如有则跳过。给未添加注释的文件添加顶部注释。
@@ -86,13 +116,13 @@ description: 整理项目根目录下的 CLAUDE.md 和 README.md 规则文件，
 
 ### 代码注释转换（自动执行）
 
-当扫描到已添加注释的文件时，检查其中的中文注释并转换为英文：
+当扫描到已添加注释的文件时，检查其中的英文注释并转换为中文：
 
 **转换规则**：
-- `// 恢复启用的脚本 on 启动` → `// Restore enabled scripts on startup`
+- `// Restore enabled scripts on startup` → `// 启动时恢复启用的脚本`
 - 保持 `//` 注释符号
-- 将中文转换为简洁的英文短语
-- 转换整个文件中所有中文注释
+- 将英文转换为简洁的中文短语
+- 转换整个文件中所有英文注释
 
 **执行顺序**：
 
@@ -100,7 +130,7 @@ description: 整理项目根目录下的 CLAUDE.md 和 README.md 规则文件，
 2. 检查文件是否已有顶部注释，如有则跳过
 3. 分析文件内容，生成文件用途说明
 4. 添加文件顶部注释
-5. 检查文件中是否存在中文注释，如有则转换为英文
+5. 检查文件中是否存在英文注释，如有则转换为中文
 6. 跳过 `node_modules`、`dist` 等目录
 
 ### 原则

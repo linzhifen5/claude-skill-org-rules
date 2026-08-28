@@ -9,8 +9,9 @@ Automatically organize and synchronize `CLAUDE.md` and `README.md` rule files in
 ### v1.2.0 (2026-08-28)
 
 - Added: Code comment feature - auto add comments to src files when organizing rules
-- Added: Chinese to English comment translation - automatically convert Chinese comments to English
+- Added: English to Chinese comment translation - automatically convert English comments to Chinese
 - Added: GitHub push feature - auto push after updates, no confirmation needed
+- Added: .gitignore organization - ensure essential files not tracked by Git are included
 
 ### v1.1.0 (2026-08-28)
 
